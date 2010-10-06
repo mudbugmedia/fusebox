@@ -203,8 +203,8 @@ module Fusebox
     # The terminate request is used to permanently remove an account and all of the account data associated with it. This operation cannot be reversed and therefore should be used with caution.
     # @see http://www.fusemail.com/support/administration-api/requests/terminate terminate API documentation
     # @param [Array] opts
-    # @option opts [String] 'user' Username of FuseMail account to terminate
-    # @option opts [Boolean] 'purge' (false) Will purge all data (such as removing the username) from our system. This process might take a few hours to complete.
+    # @option opts [String] :user Username of FuseMail account to terminate
+    # @option opts [Boolean] :purge (false) Will purge all data (such as removing the username) from our system. This process might take a few hours to complete.
     # @return [Response]
     def terminate (opts)
       default_options = {
@@ -219,8 +219,8 @@ module Fusebox
     # This request will remove a single alias from a fusemail account
     # @see http://www.fusemail.com/support/administration-api/requests/removealias removealias API documentation
     # @param [Array] opts
-    # @option opts [String] 'user' FuseMail user to delete alias from
-    # @option opts [String] 'alias' alias to delete (e.g. user@example.com )
+    # @option opts [String] :user FuseMail user to delete alias from
+    # @option opts [String] :alias alias to delete (e.g. user@example.com )
     # @return [Response]
     def removealias (opts)
       default_options = {
@@ -235,8 +235,8 @@ module Fusebox
     # This request will remove a domain name and all its mail aliases, auto-responders, mailing lists & forwarders associated with it. Please see below for the specific requirements for this request.
     # @see http://www.fusemail.com/support/administration-api/requests/removedomain removedomain API documentation
     # @param [Array] opts
-    # @option opts [String] 'domain' The domain to delete
-    # @option opts [Boolean] 'confirm' (true) This must be set to true to confirm that you understand all aliases, auto-responders, mailing lists & forwarders with this domain will be permanently deleted.
+    # @option opts [String]  :domain The domain to delete
+    # @option opts [Boolean] :confirm (true) This must be set to true to confirm that you understand all aliases, auto-responders, mailing lists & forwarders with this domain will be permanently deleted.
     # @return [Response]
     def removedomain (opts)
       default_options = {
@@ -252,9 +252,9 @@ module Fusebox
     # This request will remove an existing email forwarder
     # @see http://www.fusemail.com/support/administration-api/requests/removeforward removeforward API documentation
     # @param [Array] opts
-    # @option opts [String] 'user' Username of FuseMail account to remove forwarder to
-    # @option opts [String] 'forward_what' Email address of forwarder
-    # @option opts [String] 'forward_to' External email address that forwarder will send to
+    # @option opts [String] :user Username of FuseMail account to remove forwarder to
+    # @option opts [String] :forward_what Email address of forwarder
+    # @option opts [String] :forward_to External email address that forwarder will send to
     # @return [Response]
     def removeforward (opts)
       default_options = {
@@ -270,9 +270,9 @@ module Fusebox
     # This request will provide information about one or more accounts under your platform in CSV format
     # @see http://www.fusemail.com/support/administration-api/requests/report report API documentation
     # @param [Array] opts
-    # @option opts [String] 'user' ('all') The username you wish to query for information; you may also enter the username "all" to get information about all users under your platform
-    # @option opts [Boolean] 'group_subaccount' (true) Provide information not only for the Group Administration account but also for the group sub-accounts under the Group Administration account
-    # @option opts ['basic', 'extended'] report_type ('basic') Level of detailed in returned results
+    # @option opts [String] :user ('all') The username you wish to query for information; you may also enter the username "all" to get information about all users under your platform
+    # @option opts [Boolean] :group_subaccount (true) Provide information not only for the Group Administration account but also for the group sub-accounts under the Group Administration account
+    # @option opts ['basic', 'extended'] :report_type ('basic') Level of detailed in returned results
     # @return [Response]
     def report (opts = {})
       default_options = {
@@ -288,9 +288,9 @@ module Fusebox
     # This request will provide information about mail aliases, forwarders, autoresponders, or mailing lists on one or more accounts under your platform in CSV format.
     # @see http://www.fusemail.com/support/administration-api/requests/reportmail reportmail API documentation
     # @param [Array] opts
-    # @option opts [String] 'user' ('all') The username you wish to query for information; you may also enter the username "all" to get information about all users under your platform
-    # @option opts [Boolean] 'group_subaccount' (true) Provide information not only for the Group Administration account but also for the group sub-accounts under the Group Administration account
-    # @option opts ['all', 'alias', 'forwarder', 'autorespond', 'mailinglist'] report_type ('all')
+    # @option opts [String] :user ('all') The username you wish to query for information; you may also enter the username "all" to get information about all users under your platform
+    # @option opts [Boolean] :group_subaccount (true) Provide information not only for the Group Administration account but also for the group sub-accounts under the Group Administration account
+    # @option opts ['all', 'alias', 'forwarder', 'autorespond', 'mailinglist'] :report_type ('all')
     #   * 'all' = Provide aliases, forwarders, autoresponders, and mailing list info
     #   * 'alias' = Provide only alias information
     #   * 'forwarder' = Provide only fowarder information
@@ -301,7 +301,7 @@ module Fusebox
       default_options = {
         :user => 'all',
         :group_subaccount => true,
-        :report_type => 'extended'
+        :report_type => 'all'
       }
       
       opts.reverse_merge! default_options
@@ -311,7 +311,7 @@ module Fusebox
     # The suspend request allow you to suspend an account under your platform or temporarily stop access to the account without deleting any of the accounts data. Below are the variables that are specific to this request.
     # @see http://www.fusemail.com/support/administration-api/requests/suspend suspend API documentation
     # @param [Array] opts
-    # @option opts [String] 'user' Username of FuseMail account to suspend
+    # @option opts [String] :user Username of FuseMail account to suspend
     # @return [Response]
     def suspend (opts)
       default_options = {
