@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require File.expand_path('../../lib/fusebox', __FILE__)
+require 'fusebox/cli'
+
+# Unavailable until we can confirm our final behavior
+# config_rc = File.expand_path('~/.fuseboxrc')
+# require config_rc if File.exist?(config_rc)
+
+Fusebox::Cli.start

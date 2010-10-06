@@ -8,15 +8,16 @@ Gem::Specification.new do |s|
   s.authors     = ["Gabe Martin-Dempesy"]
   s.email       = ["gabe@mudbugmedia.com.com"]
   s.homepage    = "http://github.com/mudbugmedia/fusebox"
-  s.summary     = "FuseMail API client library"
-  s.description = "FuseMail API client library"
+  s.summary     = "FuseMail API client library and CLI"
+  s.description = "FuseMail API client library and CLI"
  
   s.required_rubygems_version = ">= 1.3.6"
  
- 
   s.add_dependency('activesupport', '>= 2.0')
+  s.add_dependency('thor', '>= 0.14')
   s.add_development_dependency "rspec"
  
   s.files        = Dir.glob("lib/**/*") + Dir.glob("spec/*") + %w(LICENSE README.md)
+  s.executables  = %w(fusebox)
   s.require_path = 'lib'
 end

@@ -1,18 +1,30 @@
+# fusebox
+
+## Description
+
 [FuseMail](http://fusemail.com) is a business email hosting provider offering outsourced email hosting to businesses and resellers.
 
 **fusebox** is a ruby gem that provides a 1:1 native ruby interface for every command of [FuseMail Platform Programming Interface v2.6](http://www.fusemail.com/support/administration-api), which allows you to manage your accounts, domains, forwards, and aliases via an underlying HTTP interface.
 
 ## Installation
-    gem install fusebox
+    $ gem install fusebox
 
 ## Configuration
-Although the library supports passing a username and password to {Fusebox::Request#initialize}, we recommend storing authentication information in a yaml file within {Fusebox::Request.auth_yaml_paths} as:
+Although the library supports passing a username and password to {Fusebox::Request#initialize}, we recommend storing authentication information in a YAML file within {Fusebox::Request.auth_yaml_paths} as:
 
-    # cat ~/.fusemail.yaml
+    $ cat ~/.fusemail.yaml
     username: my_username
     password: my_password
 
-## Examples
+## Command Line Interface (CLI)
+fusebox comes with a command line interface (written on the amazing [thor](http://github.com/wycats/thor/)).  CLI usage requires the setup of a ~/.fusemail.yaml authentication file. For a command list type:
+    $ fusebox help
+or for command specific flags, e.g. "rm"
+    $ fusebox help rm
+
+Note: The CLI interface *currently* assumes all group accounts are named postmaster@example.com, and that the username for all accounts is a full email address.
+
+## Library Examples
 ### Fetch a list of users
     response = Fusebox::Request.new.report
     if response.success?
@@ -27,13 +39,13 @@ Although the library supports passing a username and password to {Fusebox::Reque
       puts "Failure: " + response.detail
     end
 
+See the [Fusebox::Request](http://rubydoc.info/github/mudbugmedia/fusebox/master/Fusebox/Request) documentation for more commands.
 
 ## Documentation
-http://rubydoc.info/github/mudbugmedia/fusebox/master/frames
+* [Project Documentation](http://rubydoc.info/github/mudbugmedia/fusebox/master/frames)
+* [Command Documentation](http://rubydoc.info/github/mudbugmedia/fusebox/master/Fusebox/Request)
 
 ## TODO
-* Ruby 1.8's OpenSSL does not verify certificates and displays "warning: peer certificate won't be verified in this SSL session"
-* CLI tools with Thor
 * Logging hook
 * Leverage ActiveModel to create Account, Domain, Alias, etc, classes.
 

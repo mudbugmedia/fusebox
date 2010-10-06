@@ -10,3 +10,5 @@ require 'fusebox/version'
 require 'fusebox/request'
 require 'fusebox/response'
 require 'fusebox/core_ext/net_http'
+
+# 'fusebox/cli' is intentionally not loaded to reduce overhead; bin/fusebox requires it instead
