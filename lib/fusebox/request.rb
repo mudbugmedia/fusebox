@@ -334,7 +334,7 @@ protected
         return if @username && @password
       end
       
-      raise "Could not locate a fusemail authentication file in locations: #{auth_yaml_paths.to_s}"
+      raise "Could not locate a fusemail authentication file in locations: #{self.class.auth_yaml_paths.inspect}"
     end
   
     # @param [String] command

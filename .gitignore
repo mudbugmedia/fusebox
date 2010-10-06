@@ -1,3 +1,5 @@
+._*
 .yardoc/
-tmp/
 doc/
+pkg/
+tmp/

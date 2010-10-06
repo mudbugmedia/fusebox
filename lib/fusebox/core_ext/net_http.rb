@@ -12,6 +12,7 @@ module Net
       req.basic_auth url.user, url.password if url.user
       http = new(url.host, url.port)
       http.use_ssl = (url.scheme == 'https')
+      http.verify_mode = OpenSSL::SSL::VERIFY_PEER
       http.start {|http|
         http.request(req)
       }      
