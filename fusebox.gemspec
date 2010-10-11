@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.add_dependency('thor', '>= 0.14')
   s.add_development_dependency "rspec"
  
-  s.files        = Dir.glob("lib/**/*") + Dir.glob("spec/*") + %w(LICENSE README.md)
+  s.files        = Dir.glob("{lib,spec,vendor}/**/*") + %w(LICENSE README.md)
   s.executables  = %w(fusebox)
   s.require_path = 'lib'
 end
