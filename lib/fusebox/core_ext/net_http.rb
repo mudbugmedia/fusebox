@@ -13,6 +13,7 @@ module Net
       http = new(url.host, url.port)
       http.use_ssl = (url.scheme == 'https')
       http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      http.ca_file = File.expand_path('../../../../vendor/curl-cacert.pem', __FILE__)
       http.start {|http|
         http.request(req)
       }      

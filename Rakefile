@@ -3,6 +3,13 @@ require 'rake'
 task :default => :spec
 task :test => :spec
 
+namespace :cacert do
+  desc "Update cacert.pem from curl.haxx.se"
+  task :update do
+    exec "curl -O http://curl.haxx.se/ca/cacert.pem > vendor/curl-cacert.pem"
+  end
+end
+
 begin
   require 'spec'
   require 'spec/rake/spectask'

@@ -22,7 +22,7 @@ module Fusebox
     self.url = 'https://www.fusemail.com/api/request.html'
     
     # @return [Array<String>] List of available API commands
-    COMMANDS = %w(adddomain addforward changeusername checkalias checkdomain suspend enable getforward modify order terminate removealias removedomain removeforward report reportmail suspend)
+    COMMANDS = %w(adddomain addforward changeusername checkalias checkdomain suspend enable getforward modify order terminate removealias removedomain removeforward report reportmail)
   
     # @param [String] username API username.  If not provided, auth_yaml_paths will be searched for authentication information instead.
     # @param [String] password API password
@@ -85,7 +85,7 @@ module Fusebox
     end
     
     # This request is used to change the an account's username
-    # @see http://www.fusemail.com/support/administration-api/requests/changeusername checkalias API documentation
+    # @see http://www.fusemail.com/support/administration-api/requests/changeusername changeusername API documentation
     # @param [Array] opts
     # @param opts [String] :user Username of FuseMail account to modify
     # @param opts [String] :newuser New username of the account
@@ -115,7 +115,7 @@ module Fusebox
     end
     
     # This request is used to change the an account's username
-    # @see http://www.fusemail.com/support/administration-api/requests/changeusername changeusername API documentation
+    # @see http://www.fusemail.com/support/administration-api/requests/suspend suspend API documentation
     # @param [Array] opts
     # @option opts [String] :user Username of FuseMail account to modify
     # @return [Response]
