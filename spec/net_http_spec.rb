@@ -11,7 +11,7 @@ describe Net::HTTP do
 
     it "should reject SSL mismatches" do
       lambda {
-        Net::HTTP.post_form_with_ssl URI.parse('https://72.32.178.162/'), {}
+        Net::HTTP.post_form_with_ssl URI.parse('https://67.207.202.119/'), {}
       }.should raise_exception(OpenSSL::SSL::SSLError, /hostname/)
     end
   end
