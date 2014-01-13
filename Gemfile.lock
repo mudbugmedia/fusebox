@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fusebox (0.2.2)
+    fusebox (0.2.3)
       activesupport (>= 2.0)
       thor (~> 0.14)
 
