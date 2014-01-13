@@ -16,7 +16,7 @@ module Net
       http.ca_file = File.expand_path('../../../../vendor/curl-cacert.pem', __FILE__)
       http.start {|http|
         http.request(req)
-      }      
+      }
     end
   end
 end

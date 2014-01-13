@@ -3,27 +3,27 @@ require 'yaml'
 module Fusebox
   # @see http://www.fusemail.com/support/administration-api
   class Request
-    
+
     class << self
       # @return [Array<String>] Paths to search for API platform authentication information
       attr_accessor :auth_yaml_paths
-    
+
       # @return [String] API URL to POST requests to
       attr_accessor :url
     end
-    
+
     # @return [String] Platform API username
     attr_accessor :username
 
     # @return [String] Platform API password
     attr_accessor :password
-    
+
     self.auth_yaml_paths = %w(~/.fusemail.yaml)
     self.url = 'https://www.fusemail.com/api/request.html'
-    
+
     # @return [Array<String>] List of available API commands
     COMMANDS = %w(adddomain addforward changeusername checkalias checkdomain suspend enable getforward modify order terminate removealias removedomain removeforward report reportmail)
-  
+
     # @param [String] username API username.  If not provided, auth_yaml_paths will be searched for authentication information instead.
     # @param [String] password API password
     def initialize (username = nil, password = nil)
@@ -34,7 +34,7 @@ module Fusebox
         load_auth_from_yaml
       end
     end
-  
+
     # This request will add a domain to the specified account. The must be under your platform
     # @see http://www.fusemail.com/support/administration-api/requests/adddomain adddomain API documentation
     # @param [Array] opts
@@ -46,7 +46,7 @@ module Fusebox
         :domain => '',
         :user => ''
       }
-      
+
       opts.reverse_merge! default_options
       post 'adddomain', opts
     end
@@ -64,12 +64,12 @@ module Fusebox
         :forward_what => '',
         :forward_to => ''
       }
-      
+
       opts.reverse_merge! default_options
       post 'addforward', opts
     end
 
-    
+
     # This request will check the availability of an alias against the whole system. Remember to add an alias, the domain must belong to the platform or to that account.
     # @see http://www.fusemail.com/support/administration-api/requests/checkalias checkalias API documentation
     # @param [Array] opts
@@ -79,11 +79,11 @@ module Fusebox
       default_options = {
         :alias => ''
       }
-      
+
       opts.reverse_merge! default_options
       post 'checkalias', opts
     end
-    
+
     # This request is used to change the an account's username
     # @see http://www.fusemail.com/support/administration-api/requests/changeusername changeusername API documentation
     # @param [Array] opts
@@ -95,11 +95,11 @@ module Fusebox
         :user => '',
         :newuser => ''
       }
-      
+
       opts.reverse_merge! default_options
       post 'changeusername', opts
     end
-    
+
     # This request will check the availability of a domain name. This only checks if the domain name is available on our system, it does not reflect registrar status.
     # @see http://www.fusemail.com/support/administration-api/requests/checkdomain checkdomain API documentation
     # @param [Array] opts
@@ -109,11 +109,11 @@ module Fusebox
       default_options = {
         :domain => ''
       }
-      
+
       opts.reverse_merge! default_options
       post 'checkdomain', opts
     end
-    
+
     # This request is used to change the an account's username
     # @see http://www.fusemail.com/support/administration-api/requests/suspend suspend API documentation
     # @param [Array] opts
@@ -123,7 +123,7 @@ module Fusebox
       default_options = {
         :user => '',
       }
-      
+
       opts.reverse_merge! default_options
       post 'suspend', opts
     end
@@ -137,11 +137,11 @@ module Fusebox
       default_options = {
         :user => ''
       }
-      
+
       opts.reverse_merge! default_options
       post 'enable', opts
     end
-  
+
     # This request will return the forward currently set on an alias in the {Response#detail} attribute
     # @see http://www.fusemail.com/support/administration-api/requests/getforward getforward API documentation
     # @param [Array] opts
@@ -153,11 +153,11 @@ module Fusebox
         :user => '',
         :forward_what => ''
       }
-      
+
       opts.reverse_merge! default_options
       post 'getforward', opts
     end
-  
+
     # This request is used to modify personal information, password, and the account plan of the account. Only send the variables you wish to modify. If a NULL variable is detected, no change will be made to the account.
     # @see http://www.fusemail.com/support/administration-api/requests/modify modify API documentation
     # @param opts (see Fusemail::Request#order)
@@ -165,11 +165,11 @@ module Fusebox
     def modify (opts)
       default_options = {
       }
-      
+
       opts.reverse_merge! default_options
       post 'modify', opts
     end
-  
+
     # This is a request to submit a new order and create a new account under your Fused Platform account. Orders are processed within 5 minutes of request submission. Below are the variables that are specific to this type of request.
     # @see http://www.fusemail.com/support/administration-api/requests/order order API documentation
     # @param [Array] opts
@@ -195,11 +195,11 @@ module Fusebox
         :last_name => '',
         :maxdisk => 1000
       }
-      
+
       opts.reverse_merge! default_options
       post 'order', opts
     end
-    
+
     # The terminate request is used to permanently remove an account and all of the account data associated with it. This operation cannot be reversed and therefore should be used with caution.
     # @see http://www.fusemail.com/support/administration-api/requests/terminate terminate API documentation
     # @param [Array] opts
@@ -211,11 +211,11 @@ module Fusebox
         :user => '',
         :purge => false
       }
-      
+
       opts.reverse_merge! default_options
       post 'terminate', opts
     end
-    
+
     # This request will remove a single alias from a fusemail account
     # @see http://www.fusemail.com/support/administration-api/requests/removealias removealias API documentation
     # @param [Array] opts
@@ -227,11 +227,11 @@ module Fusebox
         :user => '',
         :alias => ''
       }
-      
+
       opts.reverse_merge! default_options
       post 'removealias', opts
     end
-    
+
     # This request will remove a domain name and all its mail aliases, auto-responders, mailing lists & forwarders associated with it. Please see below for the specific requirements for this request.
     # @see http://www.fusemail.com/support/administration-api/requests/removedomain removedomain API documentation
     # @param [Array] opts
@@ -243,12 +243,12 @@ module Fusebox
         :domain => '',
         :confirm => true
       }
-      
+
       opts.reverse_merge! default_options
       post 'removedomain', opts
     end
-    
-    
+
+
     # This request will remove an existing email forwarder
     # @see http://www.fusemail.com/support/administration-api/requests/removeforward removeforward API documentation
     # @param [Array] opts
@@ -262,11 +262,11 @@ module Fusebox
         :forward_what => '',
         :forward_to => ''
       }
-      
+
       opts.reverse_merge! default_options
       post 'removeforward', opts
     end
-    
+
     # This request will provide information about one or more accounts under your platform in CSV format
     # @see http://www.fusemail.com/support/administration-api/requests/report report API documentation
     # @param [Array] opts
@@ -280,11 +280,11 @@ module Fusebox
         :group_subaccount => true,
         :report_type => 'basic'
       }
-      
+
       opts.reverse_merge! default_options
       post 'report', opts, "report_#{opts[:report_type]}".to_sym
     end
-    
+
     # This request will provide information about mail aliases, forwarders, autoresponders, or mailing lists on one or more accounts under your platform in CSV format.
     # @see http://www.fusemail.com/support/administration-api/requests/reportmail reportmail API documentation
     # @param [Array] opts
@@ -303,11 +303,11 @@ module Fusebox
         :group_subaccount => true,
         :report_type => 'all'
       }
-      
+
       opts.reverse_merge! default_options
       post 'reportmail', opts, :reportmail
     end
-    
+
     # The suspend request allow you to suspend an account under your platform or temporarily stop access to the account without deleting any of the accounts data. Below are the variables that are specific to this request.
     # @see http://www.fusemail.com/support/administration-api/requests/suspend suspend API documentation
     # @param [Array] opts
@@ -317,13 +317,13 @@ module Fusebox
       default_options = {
         :user => ''
       }
-      
+
       opts.reverse_merge! default_options
       post 'suspend', opts
     end
-  
+
 protected
-  
+
     # Load the platform authentication informaiton from a YAML file
     # @see Request.auth_yaml_paths
     def load_auth_from_yaml
@@ -333,10 +333,10 @@ protected
         @password = auth['password']
         return if @username && @password
       end
-      
+
       raise "Could not locate a fusemail authentication file in locations: #{self.class.auth_yaml_paths.inspect}"
     end
-  
+
     # @param [String] command
     # @param [Hash] post_vars
     # @param [Fusebox::Request::CSV_MAPS.keys, nil] result_map_type (nil) For commands that return CSV data, which column map to use
@@ -344,11 +344,11 @@ protected
     def post (command, post_vars, result_map_type = nil)
       post_vars.reverse_merge!(:PlatformUser => @username, :PlatformPassword => @password, :request => command)
       post_vars = self.class.convert_post_vars(post_vars)
-      
+
       result = Net::HTTP.post_form_with_ssl(URI.parse(self.class.url), post_vars)
       Response.new(result, result_map_type)
     end
-    
+
     # Convert non-string values in post vars to Fusemail's expected formatting
     # * Boolean => 'yes' or 'no'
     # * Array   => Remove 'foo' and create 'foo[0]', 'foo[1]'
@@ -360,7 +360,7 @@ protected
         # Convert booleans to 'yes', 'no' strings
         if [TrueClass, FalseClass].include?(value.class)
           ret[key] = (value ? 'yes' : 'no')
-        
+
         # Convert arrays into 'key[0]', 'key[1]', ...
         elsif value.class == Array
           value.each_with_index do |value, index|
@@ -370,9 +370,9 @@ protected
           ret[key] = value
         end
       end
-      
+
       ret
     end
-    
+
   end
 end

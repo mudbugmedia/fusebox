@@ -8,7 +8,7 @@ describe Net::HTTP do
         result.class.should == Net::HTTPOK
       }.should_not raise_exception
     end
-    
+
     it "should reject SSL mismatches" do
       lambda {
         Net::HTTP.post_form_with_ssl URI.parse('https://72.32.178.162/'), {}

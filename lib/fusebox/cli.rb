@@ -23,7 +23,7 @@ module Fusebox
       response = Fusebox::Request.new.modify(:user => username, :alias => aliases)
       say response.detail
     end
-    
+
     desc "alias-ls user@example.com", "List aliases for a user"
     def alias_ls (username)
       response = Fusebox::Request.new.reportmail(:user => username, :report_type => 'alias')
@@ -33,20 +33,20 @@ module Fusebox
         warn response.detail
       end
     end
-    
+
     desc "alias-rm user@example.com alias1@example.com", "Remove an alias from a maccount"
     def alias_rm (username, alias_address)
       response = Fusebox::Request.new.removealias(:user => username, :alias => alias_address)
       say response.detail
     end
-    
+
     desc "domain-add [postmaster@]example.com new.example.com", "Add a domain a group account"
     def domain_add (username, domain)
       username = "postmaster@#{username}" unless username =~ /@/
       response = Fusebox::Request.new.adddomain(:user => username, :domain => domain)
       say response.detail
     end
-    
+
     desc "domain-rm secondary.example.com", "Remove a domain"
     method_options [:force, '-f'] => false
     def domain_rm (domain)
@@ -55,13 +55,13 @@ module Fusebox
         say response.detail
       end
     end
-    
+
     desc "enable user@example.com", "Enable a suspended user account"
     def enable (username)
       response = Fusebox::Request.new.enable(:user => username)
       say response.detail
     end
-    
+
     desc "get [user@]example.com", "Get aliases, forwarders, and mailing lists for an account"
     # @todo Display account metadata from `report`
     def get (username)
@@ -73,7 +73,7 @@ module Fusebox
         warn response.detail
       end
     end
-    
+
     desc "group-add [postmaster@]example.com [password]", "Create a group account"
     def group_add (username, password = nil)
       username = "postmaster@#{username}" unless username =~ /@/
@@ -82,7 +82,7 @@ module Fusebox
       response = Fusebox::Request.new.order(:account_type => 'standard', :user => username, :password => password, :first_name => first, :last_name => last)
       say response.detail
     end
-    
+
     desc "ls [[postmaster@]example.com]", "List accounts. This will list all group accounts if argument is blank"
     method_options [:recursive, '-r'] => :boolean
     # @todo add flag for ignoring terminated accounts
@@ -96,14 +96,14 @@ module Fusebox
         warn response.detail
       end
     end
-    
+
     desc "passwd user@example.com [newpassword]", "Change a user's password (will prompt if password left blank)"
     def passwd (username, password = nil)
       password = ask "New Password:" unless password
       response = Fusebox::Request.new.modify(:user => username, :password => password)
       say response.detail
     end
-    
+
     desc "rename old@example.com new@example.com", "Rename an account's username"
     def rename (old_username, new_username)
       response = Fusebox::Request.new.changeusername(:user => old_username, :newuser => new_username)
@@ -121,7 +121,7 @@ module Fusebox
         say "No action taken."
       end
     end
-    
+
     desc "suspend user@example.com", "Suspend a user account"
     def suspend (username)
       response = Fusebox::Request.new.suspend(:user => username)

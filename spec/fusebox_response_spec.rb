@@ -9,7 +9,7 @@ describe Fusebox::Response do
     resp.detail.should == 'Success'
     resp.code.should == 1
   end
-  
+
   it "should populate records" do
     mocked_httpok = mock('Net::HTTPOK')
     mocked_httpok.stub!(:body).and_return("1||Success \n\"test@example.com\",\"302953\",\"Alias\",\"test-*@example.com\",\"\"\n\"test@example.com\",\"302953\",\"Alias\",\"admin@example.com\",\"\"\n\"test@example.com\",\"302953\",\"Alias\",\"test@example.com\",\"\"\n")
