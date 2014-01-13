@@ -1,23 +1,28 @@
-# -*- encoding: utf-8 -*-
-require File.expand_path('../lib/fusebox/version', __FILE__)
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'fusebox/version'
 
-Gem::Specification.new do |s|
-  s.name        = "fusebox"
-  s.version     = Fusebox::VERSION
-  s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Gabe Martin-Dempesy"]
-  s.email       = ["gabe@mudbugmedia.com.com"]
-  s.homepage    = "http://github.com/mudbugmedia/fusebox"
-  s.summary     = "FuseMail API client library and CLI"
-  s.description = "FuseMail API client library and CLI"
+Gem::Specification.new do |spec|
+  spec.name          = "fusebox"
+  spec.version       = Fusebox::VERSION
+  spec.authors       = ["Gabe Martin-Dempesy"]
+  spec.email         = ["gabe@mudbugmedia.com"]
+  spec.description   = "FuseMail API client library and CLI"
+  spec.summary       = "FuseMail API client library and CLI"
+  spec.homepage      = "http://github.com/mudbugmedia/fusebox"
+  spec.license       = "MIT"
 
-  s.required_rubygems_version = ">= 1.3.6"
+  spec.files         = `git ls-files`.split($/)
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = ["lib"]
 
-  s.add_dependency('activesupport', '>= 2.0')
-  s.add_dependency('thor', '>= 0.14')
-  s.add_development_dependency "rspec"
+  spec.add_dependency "activesupport", ">= 2.0"
+  spec.add_dependency "thor", "~> 0.14"
 
-  s.files        = Dir.glob("{lib,spec,vendor}/**/*") + %w(LICENSE README.md)
-  s.executables  = %w(fusebox)
-  s.require_path = 'lib'
+  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "yard"
 end
