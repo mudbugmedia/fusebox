@@ -45,10 +45,6 @@ See the [Fusebox::Request](http://rubydoc.info/github/mudbugmedia/fusebox/master
 * [Project Documentation](http://rubydoc.info/github/mudbugmedia/fusebox/master/frames)
 * [Command Documentation](http://rubydoc.info/github/mudbugmedia/fusebox/master/Fusebox/Request)
 
-## TODO
-* Logging hook
-* Leverage ActiveModel to create Account, Domain, Alias, etc, classes.
-
 ## Authors
 The fusebox gem is independently developed and maintained by [Mudbug Media](http://mudbugmedia.com/) and [Gabe Martin-Dempesy](http://mudbugmedia.com/team/gabe).
 
