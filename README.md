@@ -4,7 +4,7 @@
 
 [FuseMail](http://fusemail.com) is a business email hosting provider offering outsourced email hosting to businesses and resellers.
 
-**fusebox** is a ruby gem that provides a 1:1 native ruby interface for every command of [FuseMail Platform Programming Interface v2.6](http://www.fusemail.com/support/administration-api), which allows you to manage your accounts, domains, forwards, and aliases via an underlying HTTP interface.
+**fusebox** is a ruby gem that provides a 1:1 native ruby interface for every command of [FuseMail Platform Programming Interface v2.6](https://www.fusemail.com/support/api-documentation/), which allows you to manage your accounts, domains, forwards, and aliases via an underlying HTTP interface.
 
 ## Installation
     $ gem install fusebox
@@ -54,4 +54,4 @@ The fusebox gem is independently developed and maintained by [Mudbug Media](http
 
 FuseMail LLC, and its parent company j2 Global Communications, do not provide support or maintenance for this software.
 
-Copyright &copy; 2010
+Copyright &copy; 2010 - 2014

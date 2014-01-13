@@ -36,7 +36,7 @@ module Fusebox
     end
 
     # This request will add a domain to the specified account. The must be under your platform
-    # @see http://www.fusemail.com/support/administration-api/requests/adddomain adddomain API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#adddomain adddomain API documentation
     # @param [Array] opts
     # @option opts [String] :domain The domain to add
     # @option opts [String] :user The account to add the domain to
@@ -52,7 +52,7 @@ module Fusebox
     end
 
     # This request will add an email forwarder.
-    # @see http://www.fusemail.com/support/administration-api/requests/addforward addforward API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#addforward addforward API documentation
     # @param [Array] opts
     # @option opts [String] :user Username of FuseMail account to add forwarder to
     # @option opts [String] :forward_what Email address of forwarder
@@ -71,7 +71,7 @@ module Fusebox
 
 
     # This request will check the availability of an alias against the whole system. Remember to add an alias, the domain must belong to the platform or to that account.
-    # @see http://www.fusemail.com/support/administration-api/requests/checkalias checkalias API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#checkalias checkalias API documentation
     # @param [Array] opts
     # @option opts [String] :alias The alias to check the availability of (e.g. user@example.com)
     # @return [Response]
@@ -85,7 +85,7 @@ module Fusebox
     end
 
     # This request is used to change the an account's username
-    # @see http://www.fusemail.com/support/administration-api/requests/changeusername changeusername API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#changeusername changeusername API documentation
     # @param [Array] opts
     # @param opts [String] :user Username of FuseMail account to modify
     # @param opts [String] :newuser New username of the account
@@ -101,7 +101,7 @@ module Fusebox
     end
 
     # This request will check the availability of a domain name. This only checks if the domain name is available on our system, it does not reflect registrar status.
-    # @see http://www.fusemail.com/support/administration-api/requests/checkdomain checkdomain API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#checkdomain checkdomain API documentation
     # @param [Array] opts
     # @option opts [String] :domain The domain to check the availability of
     # @return [Response]
@@ -115,7 +115,7 @@ module Fusebox
     end
 
     # This request is used to change the an account's username
-    # @see http://www.fusemail.com/support/administration-api/requests/suspend suspend API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#suspend suspend API documentation
     # @param [Array] opts
     # @option opts [String] :user Username of FuseMail account to modify
     # @return [Response]
@@ -129,7 +129,7 @@ module Fusebox
     end
 
     # The enable request allow you to activate an account under your platform or temporarily start access to the account. Below are the variables that are specific to this request.
-    # @see http://www.fusemail.com/support/administration-api/requests/enable enable API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#enable enable API documentation
     # @param [Array] opts
     # @option opts [String] :user Username of FuseMail account to enable
     # @return [Response]
@@ -143,7 +143,7 @@ module Fusebox
     end
 
     # This request will return the forward currently set on an alias in the {Response#detail} attribute
-    # @see http://www.fusemail.com/support/administration-api/requests/getforward getforward API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#getforward getforward API documentation
     # @param [Array] opts
     # @option opts [String] :user Username of FuseMail account where the forwarding alias resides
     # @option opts [String] :forward_what Alias for the forwarder
@@ -159,7 +159,7 @@ module Fusebox
     end
 
     # This request is used to modify personal information, password, and the account plan of the account. Only send the variables you wish to modify. If a NULL variable is detected, no change will be made to the account.
-    # @see http://www.fusemail.com/support/administration-api/requests/modify modify API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#modify modify API documentation
     # @param opts (see Fusemail::Request#order)
     # @return [Response]
     def modify (opts)
@@ -171,7 +171,7 @@ module Fusebox
     end
 
     # This is a request to submit a new order and create a new account under your Fused Platform account. Orders are processed within 5 minutes of request submission. Below are the variables that are specific to this type of request.
-    # @see http://www.fusemail.com/support/administration-api/requests/order order API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#order order API documentation
     # @param [Array] opts
     # @option opts [String] :user Username of FuseMail account to create
     # @option opts [String] :password Password of FuseMail account to create
@@ -201,7 +201,7 @@ module Fusebox
     end
 
     # The terminate request is used to permanently remove an account and all of the account data associated with it. This operation cannot be reversed and therefore should be used with caution.
-    # @see http://www.fusemail.com/support/administration-api/requests/terminate terminate API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#terminate terminate API documentation
     # @param [Array] opts
     # @option opts [String] :user Username of FuseMail account to terminate
     # @option opts [Boolean] :purge (false) Will purge all data (such as removing the username) from our system. This process might take a few hours to complete.
@@ -217,7 +217,7 @@ module Fusebox
     end
 
     # This request will remove a single alias from a fusemail account
-    # @see http://www.fusemail.com/support/administration-api/requests/removealias removealias API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#removealias removealias API documentation
     # @param [Array] opts
     # @option opts [String] :user FuseMail user to delete alias from
     # @option opts [String] :alias alias to delete (e.g. user@example.com )
@@ -233,7 +233,7 @@ module Fusebox
     end
 
     # This request will remove a domain name and all its mail aliases, auto-responders, mailing lists & forwarders associated with it. Please see below for the specific requirements for this request.
-    # @see http://www.fusemail.com/support/administration-api/requests/removedomain removedomain API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#removedomain removedomain API documentation
     # @param [Array] opts
     # @option opts [String]  :domain The domain to delete
     # @option opts [Boolean] :confirm (true) This must be set to true to confirm that you understand all aliases, auto-responders, mailing lists & forwarders with this domain will be permanently deleted.
@@ -250,7 +250,7 @@ module Fusebox
 
 
     # This request will remove an existing email forwarder
-    # @see http://www.fusemail.com/support/administration-api/requests/removeforward removeforward API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#removeforward removeforward API documentation
     # @param [Array] opts
     # @option opts [String] :user Username of FuseMail account to remove forwarder to
     # @option opts [String] :forward_what Email address of forwarder
@@ -268,7 +268,7 @@ module Fusebox
     end
 
     # This request will provide information about one or more accounts under your platform in CSV format
-    # @see http://www.fusemail.com/support/administration-api/requests/report report API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#report report API documentation
     # @param [Array] opts
     # @option opts [String] :user ('all') The username you wish to query for information; you may also enter the username "all" to get information about all users under your platform
     # @option opts [Boolean] :group_subaccount (true) Provide information not only for the Group Administration account but also for the group sub-accounts under the Group Administration account
@@ -286,7 +286,7 @@ module Fusebox
     end
 
     # This request will provide information about mail aliases, forwarders, autoresponders, or mailing lists on one or more accounts under your platform in CSV format.
-    # @see http://www.fusemail.com/support/administration-api/requests/reportmail reportmail API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#reportmail reportmail API documentation
     # @param [Array] opts
     # @option opts [String] :user ('all') The username you wish to query for information; you may also enter the username "all" to get information about all users under your platform
     # @option opts [Boolean] :group_subaccount (true) Provide information not only for the Group Administration account but also for the group sub-accounts under the Group Administration account
@@ -309,7 +309,7 @@ module Fusebox
     end
 
     # The suspend request allow you to suspend an account under your platform or temporarily stop access to the account without deleting any of the accounts data. Below are the variables that are specific to this request.
-    # @see http://www.fusemail.com/support/administration-api/requests/suspend suspend API documentation
+    # @see https://www.fusemail.com/support/api-documentation/requests#suspend suspend API documentation
     # @param [Array] opts
     # @option opts [String] :user Username of FuseMail account to suspend
     # @return [Response]
